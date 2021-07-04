@@ -17,11 +17,18 @@ class PracticeRecordsController < ApplicationController
     end
   end
 
-  def edit; end
+  def update
+    practice_record = PracticeRecord.find(params[:id])
+    if practice_record.update(practice_record_params)
+      render json: practice_record
+    else
+      render json: practice_record.errors.as_json
+    end
+  end
 
-  def update; end
-
-  def destroy; end
+  def destroy
+    PracticeRecord.find(params[:id]).destroy
+  end
 
   private
 
