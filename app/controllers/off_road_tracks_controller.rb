@@ -1,6 +1,4 @@
 class OffRoadTracksController < ApplicationController
-  skip_before_action :authenticate_user
-
   def index
     render json: OffRoadTrack.all
   end
