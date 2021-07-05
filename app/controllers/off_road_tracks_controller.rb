@@ -1,10 +1,12 @@
 class OffRoadTracksController < ApplicationController
+  skip_before_action :authenticate_user
+
   def index
     render json: OffRoadTrack.all
   end
 
   def show
-    reder json: OffRoadTrack.find(params[:id])
+    render json: OffRoadTrack.find(params[:id])
   end
 
   def create
