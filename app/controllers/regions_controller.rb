@@ -1,5 +1,6 @@
 class RegionsController < ApplicationController
   def index
+    sleep(1)
     render json: Region.all
   end
 
@@ -9,7 +10,7 @@ class RegionsController < ApplicationController
     render json: {
       id: region.id,
       name: region.name,
-      prefectures: region.prefectures.map { |p| { code: p.code, name: p.name } }
+      prefectures: region.prefectures.map { |p| { id: p.id, name: p.name } }
     }
   end
 end

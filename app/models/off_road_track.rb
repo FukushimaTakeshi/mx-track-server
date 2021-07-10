@@ -10,4 +10,7 @@
 #
 class OffRoadTrack < ApplicationRecord
   belongs_to :prefecture
+  has_many :practice_records
+
+  validates :prefecture, presence: true
 end

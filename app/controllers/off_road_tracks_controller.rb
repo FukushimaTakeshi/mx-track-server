@@ -1,6 +1,6 @@
 class OffRoadTracksController < ApplicationController
   def index
-    render json: OffRoadTrack.all
+    render json: OffRoadTrack.where(prefecture_id: params[:prefecture_id])
   end
 
   def show

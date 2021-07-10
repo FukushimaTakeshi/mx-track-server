@@ -7,7 +7,15 @@ class PracticeRecordsController < ApplicationController
   end
 
   def show
-    render json: PracticeRecord.find(params[:id])
+    practice_record = PracticeRecord.preload(:off_road_track).find(params[:id])
+    render json: {
+      id: practice_record.id,
+      practice_date: practice_record.practice_date,
+      track: { id: practice_record.off_road_track.id, name: practice_record.off_road_track.name },
+      hours: practice_record.hours,
+      minutes: practice_record.minutes,
+      memo: practice_record.memo
+    }
   end
 
   def create
@@ -37,6 +45,7 @@ class PracticeRecordsController < ApplicationController
   def practice_record_params
     params.require(:practice_record).permit(
       :practice_date,
+      :off_road_track_id,
       :hours,
       :minutes,
       :memo
