@@ -2,20 +2,13 @@ class PracticeRecordsController < ApplicationController
   before_action :authenticate_user
 
   def index
-    practice_records = PracticeRecord.where(user_id: current_user.id)
-    render json: practice_records
+    @practice_records = PracticeRecord.where(user_id: current_user.id)
+    render handlers: :jb
   end
 
   def show
-    practice_record = PracticeRecord.preload(:off_road_track).find(params[:id])
-    render json: {
-      id: practice_record.id,
-      practice_date: practice_record.practice_date,
-      track: { id: practice_record.off_road_track.id, name: practice_record.off_road_track.name },
-      hours: practice_record.hours,
-      minutes: practice_record.minutes,
-      memo: practice_record.memo
-    }
+    @practice_record = PracticeRecord.preload(:off_road_track).find(params[:id])
+    render handlers: :jb
   end
 
   def create
@@ -28,11 +21,11 @@ class PracticeRecordsController < ApplicationController
   end
 
   def update
-    practice_record = PracticeRecord.find(params[:id])
-    if practice_record.update(practice_record_params)
-      render json: practice_record
+    @practice_record = PracticeRecord.find(params[:id])
+    if @practice_record.update(practice_record_params)
+      render handlers: :jb
     else
-      render json: practice_record.errors.as_json
+      render json: @practice_record.errors.as_json
     end
   end
 

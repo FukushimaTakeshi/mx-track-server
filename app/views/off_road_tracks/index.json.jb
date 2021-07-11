@@ -1,0 +1,6 @@
+@off_road_tracks.map do |off_road_track|
+  {
+    id: off_road_track.id,
+    name: off_road_track.name
+  }
+end

@@ -1,0 +1,10 @@
+{
+  id: @region.id,
+  name: @region.name,
+  prefectures: @region.prefectures.map do |p|
+    {
+      id: p.id,
+      name: p.name
+    }
+  end
+}

@@ -14,7 +14,7 @@ RSpec.describe 'OffRoadTracksApis', type: :request do
     it 'レスポンスが想定通り' do
       json = JSON.parse(response.body)
       expect(json.length).to eq 1
-      expect(json[0].keys).to contain_exactly('id', 'name', 'prefecture_id', 'created_at', 'updated_at')
+      expect(json[0].keys).to contain_exactly('id', 'name')
     end
   end
 end

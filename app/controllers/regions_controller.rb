@@ -1,16 +1,11 @@
 class RegionsController < ApplicationController
   def index
-    sleep(1)
-    render json: Region.all
+    @regions = Region.all
+    render handlers: :jb
   end
 
   def show
-    # TODO: JSON Serializer
-    region = Region.preload(:prefectures).find(params[:id])
-    render json: {
-      id: region.id,
-      name: region.name,
-      prefectures: region.prefectures.map { |p| { id: p.id, name: p.name } }
-    }
+    @region = Region.preload(:prefectures).find(params[:id])
+    render handlers: :jb
   end
 end
