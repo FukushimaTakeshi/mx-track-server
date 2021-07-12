@@ -2,8 +2,13 @@ class PracticeRecordsController < ApplicationController
   before_action :authenticate_user
 
   def index
-    @practice_records = PracticeRecord.where(user_id: current_user.id)
-    render handlers: :jb
+    @practice_records = PracticeRecord.where(user_id: current_user.id).sorted(params[:sort])
+    if params[:field] == 'number_of_monthly'
+      @current_date = Date.current
+      render 'practice_records/number_of_monthly', handlers: :jb
+    else
+      render handlers: :jb
+    end
   end
 
   def show
