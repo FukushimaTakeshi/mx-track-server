@@ -15,8 +15,34 @@
 class PracticeRecord < ApplicationRecord
   belongs_to :off_road_track
 
+  attribute :hours, :integer
+  attribute :minutes, :integer
+
   validates :practice_date, presence: true
-  validates :hours, presence: true
-  validates :minutes, presence: true
+  validates :hours, numericality: { only_integer: true, less_than: 24, allow_blank: true }
+  validates :minutes, numericality: { only_integer: true, less_than: 60, allow_blank: true }
   validates :off_road_track, presence: true
+
+  after_validation :set_practice_time
+
+  SORT_PARAMS = {
+    ' ': 'ASC',
+    '-': 'DESC'
+  }.freeze
+
+  scope :sorted, lambda { |sort_param|
+    return if sort_param.nil?
+    return unless sort_param.start_with?(*SORT_PARAMS.keys.map(&:to_s))
+
+    sort_key = sort_param[1..]
+    return unless attribute_names.include?(sort_key)
+
+    order("#{sort_key}": SORT_PARAMS[:"#{sort_param[0]}"])
+  }
+
+  private
+
+  def set_practice_time
+    self.practice_time = (hours || 0) * 60 + (minutes || 0) if hours || minutes
+  end
 end

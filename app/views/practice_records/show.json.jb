@@ -5,7 +5,7 @@
     id: @practice_record.off_road_track.id,
     name: @practice_record.off_road_track.name
   },
-  hours: @practice_record.hours,
-  minutes: @practice_record.minutes,
+  hours: (@practice_record.practice_time / 60),
+  minutes: (@practice_record.practice_time % 60),
   memo: @practice_record.memo
 }
