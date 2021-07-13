@@ -1,4 +1,4 @@
-months = (0..11).map do |number|
+months = (0..5).map do |number|
   date = @current_date.ago(number.month)
   "#{date.year}-#{date.month}"
 end

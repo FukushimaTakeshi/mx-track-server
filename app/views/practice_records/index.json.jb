@@ -2,9 +2,11 @@
   {
     id: practice_record.id,
     practice_date: practice_record.practice_date,
-    off_road_track_id: practice_record.off_road_track_id,
     hours: (practice_record.practice_time / 60),
     minutes: (practice_record.practice_time % 60),
-    memo: practice_record.memo
+    memo: practice_record.memo,
+    off_road_track: {
+      name: practice_record.off_road_track.name
+    }
   }
 end
