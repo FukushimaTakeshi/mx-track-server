@@ -5,7 +5,7 @@ class RegionsController < ApplicationController
   end
 
   def show
-    @region = Region.preload(:prefectures).find(params[:id])
+    @region = Region.preload(prefectures: :off_road_tracks).find(params[:id])
     render handlers: :jb
   end
 end

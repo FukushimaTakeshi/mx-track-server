@@ -4,7 +4,10 @@
   prefectures: @region.prefectures.map do |p|
     {
       id: p.id,
-      name: p.name
+      name: p.name,
+      off_road_tracks: p.off_road_tracks.map do |o|
+        { id: o.id, name: o.name }
+      end
     }
   end
 }
