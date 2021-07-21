@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     raise ArgumentError, 'BadRequest Parameter' if payload.blank?
 
     user = User.find_or_initialize_by(uid: payload['sub'])
+    user.attributes = user_params
     user.save!
     render json: user, status: :ok
   end
@@ -20,5 +21,9 @@ class UsersController < ApplicationController
   def payload
     # sleep(2)
     @payload ||= FirebaseIdToken::Signature.verify token
+  end
+
+  def user_params
+    params.require(:user).permit(:name, :email, :photo_url)
   end
 end
