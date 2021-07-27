@@ -2,10 +2,21 @@ class UsersController < ApplicationController
   def create
     raise ArgumentError, 'BadRequest Parameter' if payload.blank?
 
-    user = User.find_or_initialize_by(uid: payload['sub'])
-    user.attributes = user_params
-    user.save!
-    render json: user, status: :ok
+    @user = User.find_or_initialize_by(uid: payload['sub'])
+    if @user.new_record?
+      @user.attributes = user_params
+      @user.save!
+    end
+    render 'users/show', handlers: :jb
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      render 'users/show', handlers: :jb
+    else
+      render json: @user.errors.as_json
+    end
   end
 
   private
