@@ -1,14 +1,17 @@
 # == Schema Information
 #
-# Table name: regions
+# Table name: vehicles
 #
 #  id         :bigint           not null, primary key
-#  name       :string           not null
+#  year       :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  model_id   :bigint           not null
 #
 FactoryBot.define do
-  factory :region do
-    sequence(:name) { |n| "TEST_NAME#{n}" }
+  factory :vehicle do
+    name { "MyString" }
+    year { 1 }
+    brand { nil }
   end
 end

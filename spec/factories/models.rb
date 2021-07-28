@@ -1,14 +1,16 @@
 # == Schema Information
 #
-# Table name: users
+# Table name: models
 #
 #  id         :bigint           not null, primary key
 #  name       :string
-#  uid        :string
+#  brand_id   :bigint           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  email      :string
-#  photo_url  :string
 #
-class User < ApplicationRecord
+FactoryBot.define do
+  factory :model do
+    name { "MyString" }
+    brand { nil }
+  end
 end

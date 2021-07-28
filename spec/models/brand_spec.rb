@@ -1,14 +1,14 @@
 # == Schema Information
 #
-# Table name: regions
+# Table name: brands
 #
 #  id         :bigint           not null, primary key
 #  name       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-FactoryBot.define do
-  factory :region do
-    sequence(:name) { |n| "TEST_NAME#{n}" }
-  end
+require 'rails_helper'
+
+RSpec.describe Brand, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end

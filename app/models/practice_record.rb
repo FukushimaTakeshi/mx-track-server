@@ -4,13 +4,12 @@
 #
 #  id                :bigint           not null, primary key
 #  practice_date     :date             not null
-#  hours             :integer          default(0), not null
-#  minutes           :integer          default(0), not null
 #  memo              :text
 #  user_id           :bigint           not null
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  off_road_track_id :bigint           not null
+#  practice_time     :integer          default(0), not null
 #
 class PracticeRecord < ApplicationRecord
   belongs_to :off_road_track

@@ -1,0 +1,6 @@
+@brands.map do |brand|
+  {
+    id: brand.id,
+    name: brand.name
+  }
+end

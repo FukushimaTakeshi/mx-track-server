@@ -1,14 +1,13 @@
 # == Schema Information
 #
-# Table name: users
+# Table name: vehicles
 #
 #  id         :bigint           not null, primary key
-#  name       :string
-#  uid        :string
+#  year       :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  email      :string
-#  photo_url  :string
+#  model_id   :bigint           not null
 #
-class User < ApplicationRecord
+class Vehicle < ApplicationRecord
+  belongs_to :model
 end

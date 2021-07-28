@@ -63,3 +63,27 @@ if Rails.env.development?
   OffRoadTrack.find_or_create_by(name: 'テストモトクロスコース２', prefecture: prefecture2)
   OffRoadTrack.find_or_create_by(name: 'テストモトクロスコース３', prefecture: prefecture3)
 end
+
+brand_beta = Brand.find_or_create_by(name: 'Beta')
+brand_gas_gas = Brand.find_or_create_by(name: 'Gas Gas')
+brand_honda = Brand.find_or_create_by(name: 'Honda')
+brand_husaberg = Brand.find_or_create_by(name: 'Husaberg')
+brand_husq = Brand.find_or_create_by(name: 'Husqvarna')
+brand_ktm = Brand.find_or_create_by(name: 'KTM')
+brand_kawasaki = Brand.find_or_create_by(name: 'Kawasaki')
+brand_sherco = Brand.find_or_create_by(name: 'Sherco')
+brand_suzuki = Brand.find_or_create_by(name: 'Suzuki')
+brand_tm = Brand.find_or_create_by(name: 'TM')
+brand_yamaha = Brand.find_or_create_by(name: 'Yamaha')
+
+if Rails.env.development?
+  model_crf = Model.find_or_create_by(brand: brand_honda, name: 'CRF 250R')
+  Vehicle.find_or_create_by(model: model_crf, year: 2022)
+  Vehicle.find_or_create_by(model: model_crf, year: 2021)
+  Vehicle.find_or_create_by(model: model_crf, year: 2020)
+  model_kxf = Model.find_or_create_by(brand: brand_kawasaki, name: 'KX 250F')
+  model_kx = Model.find_or_create_by(brand: brand_kawasaki, name: 'KX 250')
+  Vehicle.find_or_create_by(model: model_kxf, year: 2020)
+  Vehicle.find_or_create_by(model: model_kx, year: 2020)
+  Vehicle.find_or_create_by(model: model_kx, year: 2022)
+end

@@ -1,14 +1,12 @@
 # == Schema Information
 #
-# Table name: users
+# Table name: brands
 #
 #  id         :bigint           not null, primary key
-#  name       :string
-#  uid        :string
+#  name       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  email      :string
-#  photo_url  :string
 #
-class User < ApplicationRecord
+class Brand < ApplicationRecord
+  has_many :models
 end

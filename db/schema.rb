@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_21_121116) do
+ActiveRecord::Schema.define(version: 2021_07_28_133611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "brands", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "models", force: :cascade do |t|
+    t.string "name"
+    t.bigint "brand_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["brand_id"], name: "index_models_on_brand_id"
+  end
 
   create_table "off_road_tracks", force: :cascade do |t|
     t.string "name"
@@ -59,8 +73,18 @@ ActiveRecord::Schema.define(version: 2021_07_21_121116) do
     t.string "photo_url"
   end
 
+  create_table "vehicles", force: :cascade do |t|
+    t.integer "year", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "model_id", null: false
+    t.index ["model_id"], name: "index_vehicles_on_model_id"
+  end
+
+  add_foreign_key "models", "brands"
   add_foreign_key "off_road_tracks", "prefectures"
   add_foreign_key "practice_records", "off_road_tracks"
   add_foreign_key "practice_records", "users"
   add_foreign_key "prefectures", "regions"
+  add_foreign_key "vehicles", "models"
 end
