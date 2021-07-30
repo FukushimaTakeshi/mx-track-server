@@ -2,7 +2,7 @@ class UserVehiclesController < ApplicationController
   before_action :authenticate_user
 
   def index
-    @user_vehicles = UserVehicle.where(user_id: current_user.id)
+    @user_vehicles = UserVehicle.eager_load(vehicle: { model: :brand }).where(user_id: current_user.id)
     render handlers: :jb
   end
 
