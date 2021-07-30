@@ -4,7 +4,8 @@ Rails.application.routes.draw do
     resources :regions, only: [:index, :show]
     resources :practice_records
     resources :off_road_tracks
-    resources :brands, only: [:index]
+    resources :brands, only: [:index, :show]
     resources :vehicles, only: [:index, :show]
+    resources :user_vehicles, only: [:index, :create, :destroy]
   end
 end

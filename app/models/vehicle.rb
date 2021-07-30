@@ -10,4 +10,5 @@
 #
 class Vehicle < ApplicationRecord
   belongs_to :model
+  has_many :user_vehicles
 end

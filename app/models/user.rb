@@ -11,4 +11,5 @@
 #  photo_url  :string
 #
 class User < ApplicationRecord
+  has_many :user_vehicles
 end

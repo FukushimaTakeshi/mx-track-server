@@ -1,0 +1,8 @@
+years = @brand.models.map do |model|
+  model.vehicles.map(&:year)
+end
+{
+  id: @brand.id,
+  name: @brand.name,
+  years: years.flatten.uniq
+}
