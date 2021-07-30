@@ -2,13 +2,14 @@ class UserVehiclesController < ApplicationController
   before_action :authenticate_user
 
   def index
-    render UserVehicle.where(user_id: current_user.id)
+    @user_vehicles = UserVehicle.where(user_id: current_user.id)
+    render handlers: :jb
   end
 
   def create
     user_vehicle = UserVehicle.new(**user_vehicle_params, user: current_user)
     if user_vehicle.save
-      head :created
+      render json: { id: user_vehicle.id }
     else
       render json: user_vehicle.errors.as_json
     end

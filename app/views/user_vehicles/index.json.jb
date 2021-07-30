@@ -1,0 +1,8 @@
+@user_vehicles.map do |user_vehicle|
+  {
+    id: user_vehicle.id,
+    vehicle: {
+      name: "#{user_vehicle.vehicle.model.brand.name} #{user_vehicle.vehicle.model.name} #{user_vehicle.vehicle.year}"
+    }
+  }
+end
