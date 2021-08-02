@@ -10,9 +10,11 @@
 #  updated_at        :datetime         not null
 #  off_road_track_id :bigint           not null
 #  practice_time     :integer          default(0), not null
+#  user_vehicle_id   :bigint
 #
 class PracticeRecord < ApplicationRecord
   belongs_to :off_road_track
+  belongs_to :user_vehicle
 
   attribute :hours, :integer
   attribute :minutes, :integer

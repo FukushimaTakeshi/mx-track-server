@@ -1,3 +1,13 @@
+user_vehicle = @practice_record.user_vehicle
+user_vehicle_json = if user_vehicle
+                      {
+                        id: user_vehicle.id,
+                        vehicle: {
+                          name: "#{user_vehicle.vehicle.model.brand.name} #{user_vehicle.vehicle.model.name} #{user_vehicle.vehicle.year}"
+                        }
+                      }
+                    end
+
 {
   id: @practice_record.id,
   practice_date: @practice_record.practice_date,
@@ -7,5 +17,6 @@
   },
   hours: (@practice_record.practice_time / 60),
   minutes: (@practice_record.practice_time % 60),
-  memo: @practice_record.memo
+  memo: @practice_record.memo,
+  user_vehicle: user_vehicle_json
 }

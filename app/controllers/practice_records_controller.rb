@@ -46,7 +46,8 @@ class PracticeRecordsController < ApplicationController
       :off_road_track_id,
       :hours,
       :minutes,
-      :memo
+      :memo,
+      :user_vehicle_id
     ).merge(user_id: current_user.id)
   end
 end
