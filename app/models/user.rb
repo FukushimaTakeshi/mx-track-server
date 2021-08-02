@@ -12,4 +12,5 @@
 #
 class User < ApplicationRecord
   has_many :user_vehicles
+  has_many :current_vehicles
 end
