@@ -7,6 +7,9 @@
     memo: practice_record.memo,
     off_road_track: {
       name: practice_record.off_road_track.name
+    },
+    vehicle: {
+      model_name: practice_record.user_vehicle.vehicle.model.name
     }
   }
 end

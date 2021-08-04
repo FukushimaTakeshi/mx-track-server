@@ -23,6 +23,7 @@ class PracticeRecord < ApplicationRecord
   validates :hours, numericality: { only_integer: true, less_than: 24, allow_blank: true }
   validates :minutes, numericality: { only_integer: true, less_than: 60, allow_blank: true }
   validates :off_road_track, presence: true
+  validates :user_vehicle, presence: true
 
   after_validation :set_practice_time
 
