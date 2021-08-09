@@ -13,7 +13,7 @@ class OffRoadTracksController < ApplicationController
     if off_road_track.save
       head :created
     else
-      render json: off_road_track.errors.as_json
+      render json: off_road_track.errors.as_json, status: :unprocessable_entity
     end
   end
 
@@ -22,7 +22,7 @@ class OffRoadTracksController < ApplicationController
     if off_road_track.update(off_road_track_params)
       render json: off_road_track
     else
-      render json: off_road_track.errors.as_json
+      render json: off_road_track.errors.as_json, status: :unprocessable_entity
     end
   end
 

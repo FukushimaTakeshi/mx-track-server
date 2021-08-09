@@ -11,7 +11,7 @@ class UserVehiclesController < ApplicationController
     if user_vehicle.save
       render json: { id: user_vehicle.id }
     else
-      render json: user_vehicle.errors.as_json
+      render json: user_vehicle.errors.as_json, status: :unprocessable_entity
     end
   end
 

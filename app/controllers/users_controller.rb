@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       render 'users/show', handlers: :jb
     else
-      render json: @user.errors.as_json
+      render json: @user.errors.as_json, status: :unprocessable_entity
     end
   end
 

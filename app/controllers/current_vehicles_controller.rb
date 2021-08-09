@@ -12,7 +12,7 @@ class CurrentVehiclesController < ApplicationController
     if current_vehicle.save
       head :created
     else
-      render json: current_vehicle.errors.as_json
+      render json: current_vehicle.errors.as_json, status: :unprocessable_entity
     end
   end
 

@@ -24,7 +24,7 @@ class PracticeRecordsController < ApplicationController
     if practice_record.save
       head :created
     else
-      render json: practice_record.errors.as_json
+      render json: practice_record.errors.as_json, status: :unprocessable_entity
     end
   end
 
@@ -33,7 +33,7 @@ class PracticeRecordsController < ApplicationController
     if @practice_record.update(practice_record_params)
       render handlers: :jb
     else
-      render json: @practice_record.errors.as_json
+      render json: @practice_record.errors.as_json, status: :unprocessable_entity
     end
   end
 
