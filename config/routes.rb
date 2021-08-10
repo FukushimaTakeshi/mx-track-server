@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :off_road_tracks
     resources :brands, only: [:index, :show]
     resources :vehicles, only: [:index, :show]
-    resources :user_vehicles, only: [:index, :create, :destroy]
+    resources :user_vehicles, only: [:index, :show, :create, :update, :destroy]
     resources :current_vehicles, only: [:index, :create]
   end
 end
