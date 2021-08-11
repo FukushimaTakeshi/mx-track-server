@@ -14,12 +14,13 @@ class UserVehicle < ApplicationRecord
   belongs_to :vehicle
   has_one :current_vehicle, dependent: :destroy
   has_many :practice_records, dependent: :destroy
+  has_many :maintenances, dependent: :destroy
 
   attribute :initial_hours, :integer
   attribute :initial_minutes, :integer
 
-  validates :initial_hours, numericality: { only_integer: true, less_than: 999, allow_blank: true }
-  validates :initial_minutes, numericality: { only_integer: true, less_than: 60, allow_blank: true }
+  validates :initial_hours, numericality: { only_integer: true, less_than_or_equal_to: 999, allow_blank: true }
+  validates :initial_minutes, numericality: { only_integer: true, less_than_or_equal_to: 59, allow_blank: true }
 
   after_validation :set_initial_time
 

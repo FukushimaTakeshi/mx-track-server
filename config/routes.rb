@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     resources :vehicles, only: [:index, :show]
     resources :user_vehicles, only: [:index, :show, :create, :update, :destroy]
     resources :current_vehicles, only: [:index, :create]
+    resources :maintenances, only: [:index, :show, :create, :update, :destroy]
   end
 end
