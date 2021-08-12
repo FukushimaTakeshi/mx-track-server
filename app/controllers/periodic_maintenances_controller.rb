@@ -38,7 +38,7 @@ class PeriodicMaintenancesController < ApplicationController
 
   def periodic_maintenance_params
     params.require(:periodic_maintenance).permit(
-      :name,
+      :maintenance_menu_id,
       :cycle_hours,
       :cycle_minutes,
       :memo,

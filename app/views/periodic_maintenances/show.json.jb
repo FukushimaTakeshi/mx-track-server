@@ -1,5 +1,8 @@
 {
-  name: @periodic_maintenance.maintenance_menu.name,
+  menu: {
+    id: @periodic_maintenance.maintenance_menu.id,
+    name: @periodic_maintenance.maintenance_menu.name
+  },
   cycle_hours: (@periodic_maintenance.cycle_time / 60),
   cycle_minutes: (@periodic_maintenance.cycle_time % 60),
   memo: @periodic_maintenance.memo
