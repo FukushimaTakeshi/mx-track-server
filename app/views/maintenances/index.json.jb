@@ -1,8 +1,0 @@
-@maintenances.map do |maintenance|
-  {
-    id: maintenance.id,
-    name: maintenance.name,
-    cycle_hours: (maintenance.cycle_time / 60),
-    cycle_minutes: (maintenance.cycle_time % 60)
-  }
-end

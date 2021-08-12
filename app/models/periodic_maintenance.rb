@@ -1,19 +1,19 @@
 # == Schema Information
 #
-# Table name: maintenances
+# Table name: periodic_maintenances
 #
-#  id              :bigint           not null, primary key
-#  name            :string           not null
-#  cycle_time      :integer          default(0), not null
-#  memo            :text
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  user_vehicle_id :bigint           not null
+#  id                  :bigint           not null, primary key
+#  cycle_time          :integer          default(0), not null
+#  memo                :text
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  user_vehicle_id     :bigint           not null
+#  maintenance_menu_id :bigint           not null
 #
-class Maintenance < ApplicationRecord
+class PeriodicMaintenance < ApplicationRecord
   belongs_to :user_vehicle
+  belongs_to :maintenance_menu
 
-  validates :name, presence: true
   validates :cycle_time, presence: true
   validates :user_vehicle, presence: true
 

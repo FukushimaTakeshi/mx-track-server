@@ -14,7 +14,7 @@ class UserVehicle < ApplicationRecord
   belongs_to :vehicle
   has_one :current_vehicle, dependent: :destroy
   has_many :practice_records, dependent: :destroy
-  has_many :maintenances, dependent: :destroy
+  has_many :periodic_maintenances, dependent: :destroy
 
   attribute :initial_hours, :integer
   attribute :initial_minutes, :integer

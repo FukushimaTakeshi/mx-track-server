@@ -86,4 +86,10 @@ if Rails.env.development?
   Vehicle.find_or_create_by(model: model_kxf, year: 2020)
   Vehicle.find_or_create_by(model: model_kx, year: 2020)
   Vehicle.find_or_create_by(model: model_kx, year: 2022)
+
+  MaintenanceMenu.find_or_create_by(name: 'オイル交換')
+  MaintenanceMenu.find_or_create_by(name: 'オイルフィルター')
+  MaintenanceMenu.find_or_create_by(name: 'フロントフォーク')
+  MaintenanceMenu.find_or_create_by(name: 'フロントタイヤ交換')
+  MaintenanceMenu.find_or_create_by(name: 'ピストン')
 end
