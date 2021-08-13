@@ -2,7 +2,7 @@ class MaintenanceRecordsController < ApplicationController
   before_action :authenticate_user
 
   def index
-    @maintenance_records = MaintenanceRecord.where(user_vehicle_id: params[:user_vehicle_id])
+    @maintenance_records = MaintenanceRecord.where(user_vehicle_id: params[:user_vehicle_id]).sorted(params[:sort])
     render handlers: :jb
   end
 

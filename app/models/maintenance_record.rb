@@ -12,6 +12,8 @@
 #  updated_at          :datetime         not null
 #
 class MaintenanceRecord < ApplicationRecord
+  include Sortable
+
   belongs_to :maintenance_menu
   belongs_to :user_vehicle
 
