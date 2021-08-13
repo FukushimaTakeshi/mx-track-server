@@ -9,4 +9,5 @@
 #
 class MaintenanceMenu < ApplicationRecord
   has_many :periodic_maintenances
+  has_many :maintenance_records
 end

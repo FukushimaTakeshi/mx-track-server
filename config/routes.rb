@@ -10,5 +10,6 @@ Rails.application.routes.draw do
     resources :current_vehicles, only: [:index, :create]
     resources :periodic_maintenances, only: [:index, :show, :create, :update, :destroy]
     resources :maintenance_menus, only: [:index]
+    resources :maintenance_records, only: [:index, :show, :create, :update, :destroy]
   end
 end

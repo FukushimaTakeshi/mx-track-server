@@ -1,0 +1,16 @@
+@maintenance_records.map do |maintenance_record|
+  {
+    id: maintenance_record.id,
+    maintenance_on: maintenance_record.maintenance_on,
+    operation_hours: maintenance_record.operation_time / 60,
+    operation_minutes: maintenance_record.operation_time % 60,
+    memo: maintenance_record.memo,
+    maintenance_menu: {
+      id: maintenance_record.maintenance_menu_id,
+      name: maintenance_record.maintenance_menu.name
+    },
+    vehicle: {
+      model_name: maintenance_record.user_vehicle.vehicle.model.name
+    }
+  }
+end
