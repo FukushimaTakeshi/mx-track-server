@@ -29,6 +29,8 @@ class PracticeRecord < ApplicationRecord
 
   after_validation :set_practice_time
 
+  scope :date_less_than_or_equal_to, ->(date) { where(practice_date: ..date || Date.current) }
+
   private
 
   def set_practice_time

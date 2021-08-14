@@ -4,5 +4,6 @@
   initial_minutes: (@user_vehicle.initial_time % 60),
   vehicle: {
     name: "#{@user_vehicle.vehicle.model.brand.name} #{@user_vehicle.vehicle.model.name} #{@user_vehicle.vehicle.year}"
-  }
+  },
+  created_date: @user_vehicle.created_at.to_date
 }
