@@ -11,6 +11,19 @@ class UserVehiclesController < ApplicationController
     render handlers: :jb
   end
 
+  def total_times
+    user_vehicle = UserVehicle.find(params[:id])
+    @maintenance_menu_ids = user_vehicle.maintenance_menu_ids
+    last_maintenance_dates = user_vehicle.last_maintenance_dates_by(@maintenance_menu_ids)
+
+    @total_operation_times = @maintenance_menu_ids.map do |menu_id|
+      date = last_maintenance_dates[menu_id]
+      user_vehicle.total_operation_time_from_last(date)
+    end
+
+    render handlers: :jb
+  end
+
   def create
     user_vehicle = UserVehicle.new(**user_vehicle_params, user: current_user)
     if user_vehicle.save

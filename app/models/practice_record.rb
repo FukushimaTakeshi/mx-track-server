@@ -30,6 +30,14 @@ class PracticeRecord < ApplicationRecord
   after_validation :set_practice_time
 
   scope :date_less_than_or_equal_to, ->(date) { where(practice_date: ..date || Date.current) }
+  scope :greater_than_or_equal_to, ->(date) { where(practice_date: date || Date.current..) }
+
+  class << self
+    def total_time_from_last(date)
+      records = date ? greater_than_or_equal_to(date) : date_less_than_or_equal_to(nil)
+      records.sum(:practice_time)
+    end
+  end
 
   private
 

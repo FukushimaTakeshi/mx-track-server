@@ -1,0 +1,7 @@
+@maintenance_menu_ids.map.with_index do |maintenance_menu_id, index|
+  {
+    maintenance_menu_id: maintenance_menu_id,
+    total_operation_hours: @total_operation_times[index] / 60,
+    total_operation_minutes: @total_operation_times[index] % 60
+  }
+end

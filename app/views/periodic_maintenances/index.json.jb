@@ -1,7 +1,10 @@
 @periodic_maintenances.map do |periodic_maintenance|
   {
     id: periodic_maintenance.id,
-    name: periodic_maintenance.maintenance_menu.name,
+    maintenance_menu: {
+      id: periodic_maintenance.maintenance_menu_id,
+      name: periodic_maintenance.maintenance_menu.name
+    },
     cycle_hours: (periodic_maintenance.cycle_time / 60),
     cycle_minutes: (periodic_maintenance.cycle_time % 60)
   }

@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     resources :off_road_tracks
     resources :brands, only: [:index, :show]
     resources :vehicles, only: [:index, :show]
-    resources :user_vehicles, only: [:index, :show, :create, :update, :destroy]
+    resources :user_vehicles, only: [:index, :show, :create, :update, :destroy] do
+      get 'total_times', on: :member
+    end
     resources :current_vehicles, only: [:index, :create]
     resources :periodic_maintenances, only: [:index, :show, :create, :update, :destroy]
     resources :maintenance_menus, only: [:index]

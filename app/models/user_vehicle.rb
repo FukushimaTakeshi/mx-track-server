@@ -16,6 +16,7 @@ class UserVehicle < ApplicationRecord
   has_many :practice_records, dependent: :destroy
   has_many :periodic_maintenances, dependent: :destroy
   has_many :maintenance_records, dependent: :destroy
+  has_many :maintenance_menus, through: :periodic_maintenances
 
   attribute :initial_hours, :integer
   attribute :initial_minutes, :integer
@@ -24,6 +25,14 @@ class UserVehicle < ApplicationRecord
   validates :initial_minutes, numericality: { only_integer: true, less_than_or_equal_to: 59, allow_blank: true }
 
   after_validation :set_initial_time
+
+  def last_maintenance_dates_by(maintenance_menu_ids)
+    maintenance_records.last_maintenance_dates_by(maintenance_menu_ids)
+  end
+
+  def total_operation_time_from_last(maintenance_on)
+    practice_records.total_time_from_last(maintenance_on)
+  end
 
   private
 

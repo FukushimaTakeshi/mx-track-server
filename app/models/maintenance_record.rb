@@ -28,6 +28,12 @@ class MaintenanceRecord < ApplicationRecord
 
   after_validation :set_operation_time
 
+  class << self
+    def last_maintenance_dates_by(menu_ids)
+      where(maintenance_menu_id: menu_ids).group(:maintenance_menu_id).maximum(:maintenance_on)
+    end
+  end
+
   private
 
   def set_operation_time
