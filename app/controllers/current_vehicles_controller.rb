@@ -3,7 +3,15 @@ class CurrentVehiclesController < ApplicationController
 
   def index
     current_vehicle = CurrentVehicle.find_by!(user_id: current_user.id)
-    render json: { user_vehicle_id: current_vehicle.user_vehicle_id }
+    user_vehicle = current_vehicle.user_vehicle
+    # TODO: modelに移行する
+    json = {
+      id: current_vehicle.user_vehicle_id,
+      vehicle: {
+        name: "#{user_vehicle.vehicle.model.brand.name} #{user_vehicle.vehicle.model.name} #{user_vehicle.vehicle.year}"
+      }
+    }
+    render json: json
   end
 
   def create
