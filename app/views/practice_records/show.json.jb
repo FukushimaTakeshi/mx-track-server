@@ -3,7 +3,7 @@ user_vehicle_json = if user_vehicle
                       {
                         id: user_vehicle.id,
                         vehicle: {
-                          name: "#{user_vehicle.vehicle.model.brand.name} #{user_vehicle.vehicle.model.name} #{user_vehicle.vehicle.year}"
+                          model_name: "#{user_vehicle.vehicle.model.brand.name} #{user_vehicle.vehicle.model.name} #{user_vehicle.vehicle.year}"
                         }
                       }
                     end
@@ -11,7 +11,7 @@ user_vehicle_json = if user_vehicle
 {
   id: @practice_record.id,
   practice_date: @practice_record.practice_date,
-  track: {
+  off_road_track: {
     id: @practice_record.off_road_track.id,
     name: @practice_record.off_road_track.name
   },

@@ -8,7 +8,7 @@ class CurrentVehiclesController < ApplicationController
     json = {
       id: current_vehicle.user_vehicle_id,
       vehicle: {
-        name: "#{user_vehicle.vehicle.model.brand.name} #{user_vehicle.vehicle.model.name} #{user_vehicle.vehicle.year}"
+        model_name: "#{user_vehicle.vehicle.model.brand.name} #{user_vehicle.vehicle.model.name} #{user_vehicle.vehicle.year}"
       }
     }
     render json: json
