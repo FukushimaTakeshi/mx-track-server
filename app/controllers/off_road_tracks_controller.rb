@@ -5,7 +5,8 @@ class OffRoadTracksController < ApplicationController
   end
 
   def show
-    render json: OffRoadTrack.find(params[:id])
+    @off_road_track = OffRoadTrack.eager_load(:prefecture).find(params[:id])
+    render handlers: :jb
   end
 
   def create
@@ -33,6 +34,6 @@ class OffRoadTracksController < ApplicationController
   private
 
   def off_road_track_params
-    params.require(:off_road_track).permit(:name)
+    params.require(:off_road_track).permit(:name, :prefecture_id)
   end
 end

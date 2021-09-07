@@ -1,0 +1,8 @@
+{
+  id: @off_road_track.id,
+  name: @off_road_track.name,
+  prefecture: {
+    id: @off_road_track.prefecture_id,
+    name: @off_road_track.prefecture.name
+  }
+}
