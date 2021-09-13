@@ -93,3 +93,6 @@ if Rails.env.development?
   MaintenanceMenu.find_or_create_by(name: 'フロントタイヤ交換')
   MaintenanceMenu.find_or_create_by(name: 'ピストン')
 end
+
+Role.find_or_create_by(name: 'registered')
+Role.find_or_create_by(name: 'administrator')

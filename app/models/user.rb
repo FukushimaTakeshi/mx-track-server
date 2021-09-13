@@ -11,6 +11,8 @@
 #  photo_url  :string
 #
 class User < ApplicationRecord
-  has_many :user_vehicles
-  has_many :current_vehicles
+  has_many :user_vehicles, dependent: :destroy
+  has_many :current_vehicles, dependent: :destroy
+  has_many :user_roles
+  has_many :roles, through: :user_roles, dependent: :destroy
 end
