@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :periodic_maintenances, only: [:index, :show, :create, :update, :destroy]
     resources :maintenance_menus, only: [:index, :create, :update, :destroy]
     resources :maintenance_records, only: [:index, :show, :create, :update, :destroy]
-    resource :operation_time, only: [:show]
+    resource :operation_time, only: :show
+    resources :roles, only: :index
   end
 end

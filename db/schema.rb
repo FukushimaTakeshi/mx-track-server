@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_13_135714) do
+ActiveRecord::Schema.define(version: 2021_09_14_103805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,12 @@ ActiveRecord::Schema.define(version: 2021_09_13_135714) do
     t.index ["user_vehicle_id"], name: "index_periodic_maintenances_on_user_vehicle_id"
   end
 
+  create_table "permissions", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "practice_records", force: :cascade do |t|
     t.date "practice_date", null: false
     t.text "memo"
@@ -102,6 +108,15 @@ ActiveRecord::Schema.define(version: 2021_09_13_135714) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "role_permissions", force: :cascade do |t|
+    t.bigint "role_id", null: false
+    t.bigint "permission_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["permission_id"], name: "index_role_permissions_on_permission_id"
+    t.index ["role_id"], name: "index_role_permissions_on_role_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -158,6 +173,8 @@ ActiveRecord::Schema.define(version: 2021_09_13_135714) do
   add_foreign_key "practice_records", "user_vehicles"
   add_foreign_key "practice_records", "users"
   add_foreign_key "prefectures", "regions"
+  add_foreign_key "role_permissions", "permissions"
+  add_foreign_key "role_permissions", "roles"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
   add_foreign_key "user_vehicles", "users"

@@ -95,4 +95,10 @@ if Rails.env.development?
 end
 
 Role.find_or_create_by(name: 'registered')
-Role.find_or_create_by(name: 'administrator')
+admin_role = Role.find_or_create_by(name: 'administrator')
+
+permission1 = Permission.find_or_create_by(name: 'edit-off-road-tracks')
+permission2 = Permission.find_or_create_by(name: 'edit-maintenance-menus')
+
+RolePermission.find_or_create_by(role: admin_role, permission: permission1)
+RolePermission.find_or_create_by(role: admin_role, permission: permission2)
