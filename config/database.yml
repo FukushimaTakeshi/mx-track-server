@@ -23,13 +23,13 @@ default: &default
 
 development:
   <<: *default
-  database: mx_map_server_development
+  database: mx_track_server_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: mx_map_server
+  #username: mx_track_server
 
   # The password associated with the postgres role (username).
   #password:
@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: mx_map_server_test
+  database: mx_track_server_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: mx_map_server_production
-  username: mx_map_server
-  password: <%= ENV['MX_MAP_SERVER_DATABASE_PASSWORD'] %>
+  database: mx_track_server_production
+  username: mx_track_server
+  password: <%= ENV['mx_track_server_DATABASE_PASSWORD'] %>
