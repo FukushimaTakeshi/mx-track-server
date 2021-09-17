@@ -80,7 +80,4 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
-  database: mx_track_server_production
-  username: mx_track_server
-  password: <%= ENV['mx_track_server_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
