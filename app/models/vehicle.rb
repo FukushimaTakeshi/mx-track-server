@@ -11,4 +11,7 @@
 class Vehicle < ApplicationRecord
   belongs_to :model
   has_many :user_vehicles
+
+  validates :year, presence: true, uniqueness: { scope: :model }
+  validates :model, presence: true
 end

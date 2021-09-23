@@ -99,6 +99,8 @@ admin_role = Role.find_or_create_by(name: 'administrator')
 
 permission1 = Permission.find_or_create_by(name: 'edit-off-road-tracks')
 permission2 = Permission.find_or_create_by(name: 'edit-maintenance-menus')
+permission3 = Permission.find_or_create_by(name: 'edit-vehicles')
 
 RolePermission.find_or_create_by(role: admin_role, permission: permission1)
 RolePermission.find_or_create_by(role: admin_role, permission: permission2)
+RolePermission.find_or_create_by(role: admin_role, permission: permission3)

@@ -6,7 +6,8 @@ Rails.application.routes.draw do
     resources :practice_records
     resources :off_road_tracks
     resources :brands, only: [:index, :show]
-    resources :vehicles, only: [:index, :show]
+    resources :models, only: :index
+    resources :vehicles, only: [:index, :show, :create]
     resources :user_vehicles, only: [:index, :show, :create, :update, :destroy] do
       get 'total_times', on: :member
     end
