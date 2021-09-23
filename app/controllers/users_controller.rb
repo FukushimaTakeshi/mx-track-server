@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   def payload
-    sleep(2)
+    sleep(2) if Rails.env.development?
     @payload ||= FirebaseIdToken::Signature.verify token
   end
 
