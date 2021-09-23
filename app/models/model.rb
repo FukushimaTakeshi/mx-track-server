@@ -12,6 +12,6 @@ class Model < ApplicationRecord
   belongs_to :brand
   has_many :vehicles
 
-  validates :name, presence: true, uniqueness: true, length: { maximum: 10 }
+  validates :name, presence: true, uniqueness: true
   validates :brand, presence: true
 end
