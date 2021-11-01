@@ -4,5 +4,5 @@ end
 {
   id: @brand.id,
   name: @brand.name,
-  years: years.flatten.uniq
+  years: years.flatten.uniq.sort.reverse
 }

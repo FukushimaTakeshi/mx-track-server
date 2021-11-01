@@ -1,6 +1,9 @@
 class VehiclesController < ApplicationController
   def index
-    @vehicles = Vehicle.eager_load(:model).where(year: params[:year], model: { brand_id: params[:brand_id] })
+    @vehicles = Vehicle
+                .eager_load(:model)
+                .where(year: params[:year], model: { brand_id: params[:brand_id] })
+                .order('model.name')
     render handlers: :jb
   end
 
