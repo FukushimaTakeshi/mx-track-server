@@ -25,6 +25,7 @@ class UserVehicle < ApplicationRecord
   validates :initial_minutes, numericality: { only_integer: true, less_than_or_equal_to: 59, allow_blank: true }
 
   after_validation :set_initial_time
+  after_commit :create_initial_current_vehicle, on: :create
 
   def last_maintenance_dates_by(maintenance_menu_ids)
     maintenance_records.last_maintenance_dates_by(maintenance_menu_ids)
@@ -38,5 +39,11 @@ class UserVehicle < ApplicationRecord
 
   def set_initial_time
     self.initial_time = (initial_hours || 0) * 60 + (initial_minutes || 0) if initial_hours || initial_minutes
+  end
+
+  def create_initial_current_vehicle
+    return if self.class.where(user: user).size > 1 || CurrentVehicle.where(user: user).exists?
+
+    create_current_vehicle(user: user)
   end
 end
