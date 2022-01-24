@@ -7,5 +7,6 @@
   maintenance_menu: {
     id: @maintenance_record.maintenance_menu_id,
     name: @maintenance_record.maintenance_menu.name
-  }
+  },
+  user_vehicle_id: @maintenance_record.user_vehicle_id
 }

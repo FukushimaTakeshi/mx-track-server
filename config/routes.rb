@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   defaults format: :json do
-    resources :users, only: [:create, :update]
+    resources :users, only: [:index, :create, :update]
     resources :regions, only: [:index, :show]
     resources :prefectures, only: :index
     resources :practice_records

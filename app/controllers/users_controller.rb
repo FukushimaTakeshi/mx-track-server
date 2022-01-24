@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+  def index
+    @user = User.find_by!(uid: payload['sub'])
+    render 'users/show', handlers: :jb
+  end
+
   def create
     raise ArgumentError, 'BadRequest Parameter' if payload.blank?
 
