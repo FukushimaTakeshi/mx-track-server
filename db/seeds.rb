@@ -76,6 +76,12 @@ brand_suzuki = Brand.find_or_create_by(name: 'Suzuki')
 brand_tm = Brand.find_or_create_by(name: 'TM')
 brand_yamaha = Brand.find_or_create_by(name: 'Yamaha')
 
+category1 = MaintenanceCategory.find_or_create_by(name: 'エンジン')
+category2 = MaintenanceCategory.find_or_create_by(name: 'ブレーキ')
+category3 = MaintenanceCategory.find_or_create_by(name: '足回り')
+category4 = MaintenanceCategory.find_or_create_by(name: '駆動系')
+category5 = MaintenanceCategory.find_or_create_by(name: '車体周り')
+
 if Rails.env.development?
   model_crf = Model.find_or_create_by(brand: brand_honda, name: 'CRF 250R')
   Vehicle.find_or_create_by(model: model_crf, year: 2022)
@@ -87,11 +93,11 @@ if Rails.env.development?
   Vehicle.find_or_create_by(model: model_kx, year: 2020)
   Vehicle.find_or_create_by(model: model_kx, year: 2022)
 
-  MaintenanceMenu.find_or_create_by(name: 'オイル交換')
-  MaintenanceMenu.find_or_create_by(name: 'オイルフィルター')
-  MaintenanceMenu.find_or_create_by(name: 'フロントフォーク')
-  MaintenanceMenu.find_or_create_by(name: 'フロントタイヤ交換')
-  MaintenanceMenu.find_or_create_by(name: 'ピストン')
+  MaintenanceMenu.find_or_create_by(name: 'オイル交換', maintenance_category: category1)
+  MaintenanceMenu.find_or_create_by(name: 'オイルフィルター', maintenance_category: category1)
+  MaintenanceMenu.find_or_create_by(name: 'フロントフォーク', maintenance_category: category3)
+  MaintenanceMenu.find_or_create_by(name: 'フロントタイヤ交換', maintenance_category: category3)
+  MaintenanceMenu.find_or_create_by(name: 'ピストン', maintenance_category: category1)
 end
 
 Role.find_or_create_by(name: 'registered')
@@ -105,8 +111,4 @@ RolePermission.find_or_create_by(role: admin_role, permission: permission1)
 RolePermission.find_or_create_by(role: admin_role, permission: permission2)
 RolePermission.find_or_create_by(role: admin_role, permission: permission3)
 
-MaintenanceCategory.find_or_create_by(name: 'エンジン')
-MaintenanceCategory.find_or_create_by(name: 'ブレーキ')
-MaintenanceCategory.find_or_create_by(name: '足回り')
-MaintenanceCategory.find_or_create_by(name: '駆動系')
-MaintenanceCategory.find_or_create_by(name: '車体周り')
+
