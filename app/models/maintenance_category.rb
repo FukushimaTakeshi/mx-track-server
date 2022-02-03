@@ -9,4 +9,5 @@
 #
 class MaintenanceCategory < ApplicationRecord
   has_many :maintenance_menus
+  has_one :maintenance_menu_category_order
 end

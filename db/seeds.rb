@@ -77,10 +77,10 @@ brand_tm = Brand.find_or_create_by(name: 'TM')
 brand_yamaha = Brand.find_or_create_by(name: 'Yamaha')
 
 category1 = MaintenanceCategory.find_or_create_by(name: 'エンジン')
-category2 = MaintenanceCategory.find_or_create_by(name: 'ブレーキ')
+MaintenanceCategory.find_or_create_by(name: 'ブレーキ')
 category3 = MaintenanceCategory.find_or_create_by(name: '足回り')
-category4 = MaintenanceCategory.find_or_create_by(name: '駆動系')
-category5 = MaintenanceCategory.find_or_create_by(name: '車体周り')
+MaintenanceCategory.find_or_create_by(name: '駆動系')
+MaintenanceCategory.find_or_create_by(name: '車体周り')
 
 if Rails.env.development?
   model_crf = Model.find_or_create_by(brand: brand_honda, name: 'CRF 250R')
@@ -93,11 +93,17 @@ if Rails.env.development?
   Vehicle.find_or_create_by(model: model_kx, year: 2020)
   Vehicle.find_or_create_by(model: model_kx, year: 2022)
 
-  MaintenanceMenu.find_or_create_by(name: 'オイル交換', maintenance_category: category1)
-  MaintenanceMenu.find_or_create_by(name: 'オイルフィルター', maintenance_category: category1)
-  MaintenanceMenu.find_or_create_by(name: 'フロントフォーク', maintenance_category: category3)
-  MaintenanceMenu.find_or_create_by(name: 'フロントタイヤ交換', maintenance_category: category3)
-  MaintenanceMenu.find_or_create_by(name: 'ピストン', maintenance_category: category1)
+  maintenance_menu1 = MaintenanceMenu.find_or_create_by(name: 'オイル交換', maintenance_category: category1)
+  maintenance_menu2 = MaintenanceMenu.find_or_create_by(name: 'オイルフィルター', maintenance_category: category1)
+  maintenance_menu3 = MaintenanceMenu.find_or_create_by(name: 'フロントフォーク', maintenance_category: category3)
+  maintenance_menu4 = MaintenanceMenu.find_or_create_by(name: 'フロントタイヤ交換', maintenance_category: category3)
+  maintenance_menu5 = MaintenanceMenu.find_or_create_by(name: 'ピストン', maintenance_category: category1)
+
+  MaintenanceMenuCategoryOrder.find_or_create_by(maintenance_category: category1, maintenance_menu: maintenance_menu1, order: 1)
+  MaintenanceMenuCategoryOrder.find_or_create_by(maintenance_category: category1, maintenance_menu: maintenance_menu2, order: 2)
+  MaintenanceMenuCategoryOrder.find_or_create_by(maintenance_category: category3, maintenance_menu: maintenance_menu3, order: 4)
+  MaintenanceMenuCategoryOrder.find_or_create_by(maintenance_category: category3, maintenance_menu: maintenance_menu4, order: 5)
+  MaintenanceMenuCategoryOrder.find_or_create_by(maintenance_category: category1, maintenance_menu: maintenance_menu5, order: 3)
 end
 
 Role.find_or_create_by(name: 'registered')
@@ -110,5 +116,4 @@ permission3 = Permission.find_or_create_by(name: 'edit-vehicles')
 RolePermission.find_or_create_by(role: admin_role, permission: permission1)
 RolePermission.find_or_create_by(role: admin_role, permission: permission2)
 RolePermission.find_or_create_by(role: admin_role, permission: permission3)
-
 

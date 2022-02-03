@@ -12,4 +12,5 @@ class MaintenanceMenu < ApplicationRecord
   has_many :periodic_maintenances
   has_many :maintenance_records
   belongs_to :maintenance_category
+  has_one :maintenance_menu_category_order
 end
