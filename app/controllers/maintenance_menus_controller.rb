@@ -1,6 +1,10 @@
 class MaintenanceMenusController < ApplicationController
   def index
-    render json: MaintenanceMenu.all.map { |menu| { id: menu.id, name: menu.name } }
+    @maintenance_menus = MaintenanceMenu
+                         .eager_load(:maintenance_category, :maintenance_menu_category_order)
+                         .order('maintenance_menu_category_orders.order asc')
+                         .group_by { |menu| menu.maintenance_category&.id }
+    render handlers: :jb
   end
 
   def create
@@ -28,6 +32,6 @@ class MaintenanceMenusController < ApplicationController
   private
 
   def maintenance_menu_params
-    params.require(:maintenance_menu).permit(:name)
+    params.require(:maintenance_menu).permit(:name, :maintenance_category_id)
   end
 end

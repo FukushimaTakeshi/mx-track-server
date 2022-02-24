@@ -11,6 +11,6 @@
 class MaintenanceMenu < ApplicationRecord
   has_many :periodic_maintenances
   has_many :maintenance_records
-  belongs_to :maintenance_category
+  belongs_to :maintenance_category, optional: true
   has_one :maintenance_menu_category_order
 end
