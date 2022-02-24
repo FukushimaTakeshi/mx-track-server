@@ -1,0 +1,12 @@
+@maintenance_menus.map do |_, value|
+  {
+    category_name: value.first.maintenance_category&.name,
+    menus: value.map do |maintenance_menu|
+      {
+        id: maintenance_menu.id,
+        name: maintenance_menu.name,
+        # order: maintenance_menu.maintenance_menu_category_order.order
+      }
+    end
+  }
+end
