@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_03_134301) do
+ActiveRecord::Schema.define(version: 2022_04_05_133452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(version: 2022_02_03_134301) do
     t.index ["maintenance_category_id"], name: "index_menu_category_orders_on_maintenance_category"
     t.index ["maintenance_menu_id", "maintenance_category_id"], name: "index_maintenance_menu_category_orders", unique: true
     t.index ["maintenance_menu_id"], name: "index_menu_category_orders_on_maintenance_menu_id"
+  end
+
+  create_table "maintenance_menu_records", force: :cascade do |t|
+    t.bigint "maintenance_record_id", null: false
+    t.bigint "maintenance_menu_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["maintenance_menu_id"], name: "index_maintenance_menu_records_on_maintenance_menu_id"
+    t.index ["maintenance_record_id"], name: "index_maintenance_menu_records_on_maintenance_record_id"
   end
 
   create_table "maintenance_menus", force: :cascade do |t|
@@ -184,6 +193,8 @@ ActiveRecord::Schema.define(version: 2022_02_03_134301) do
   add_foreign_key "current_vehicles", "users"
   add_foreign_key "maintenance_menu_category_orders", "maintenance_categories"
   add_foreign_key "maintenance_menu_category_orders", "maintenance_menus"
+  add_foreign_key "maintenance_menu_records", "maintenance_menus"
+  add_foreign_key "maintenance_menu_records", "maintenance_records"
   add_foreign_key "maintenance_menus", "maintenance_categories"
   add_foreign_key "maintenance_records", "maintenance_menus"
   add_foreign_key "maintenance_records", "user_vehicles"

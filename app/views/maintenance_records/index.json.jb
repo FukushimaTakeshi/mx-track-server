@@ -5,10 +5,12 @@
     operation_hours: maintenance_record.operation_time / 60,
     operation_minutes: maintenance_record.operation_time % 60,
     memo: maintenance_record.memo,
-    maintenance_menu: {
-      id: maintenance_record.maintenance_menu_id,
-      name: maintenance_record.maintenance_menu.name
-    },
+    maintenance_menus: maintenance_record.maintenance_menus.map do |menu|
+      {
+        id: menu.id,
+        name: menu.name
+      }
+    end,
     vehicle: {
       model_name: maintenance_record.user_vehicle.vehicle.model.name
     }

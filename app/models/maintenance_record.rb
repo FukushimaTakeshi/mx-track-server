@@ -16,6 +16,8 @@ class MaintenanceRecord < ApplicationRecord
 
   belongs_to :maintenance_menu
   belongs_to :user_vehicle
+  has_many :maintenance_menu_records
+  has_many :maintenance_menus, through: :maintenance_menu_records
 
   attribute :operation_hours, :integer
   attribute :operation_minutes, :integer
@@ -23,7 +25,7 @@ class MaintenanceRecord < ApplicationRecord
   validates :maintenance_on, presence: true
   validates :operation_hours, numericality: { only_integer: true, less_than_or_equal_to: 999, allow_blank: true }
   validates :operation_minutes, numericality: { only_integer: true, less_than_or_equal_to: 59, allow_blank: true }
-  validates :maintenance_menu, presence: true
+  validates :maintenance_menus, presence: true
   validates :user_vehicle, presence: true
 
   after_validation :set_operation_time

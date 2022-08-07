@@ -36,13 +36,13 @@ class MaintenanceRecordsController < ApplicationController
   private
 
   def maintenance_records_params
-    params.require(:maintenance_record).permit(
+    params.permit(
       :maintenance_on,
       :operation_hours,
       :operation_minutes,
       :memo,
-      :maintenance_menu_id,
-      :user_vehicle_id
+      :user_vehicle_id,
+      maintenance_menu_ids: []
     )
   end
 end
