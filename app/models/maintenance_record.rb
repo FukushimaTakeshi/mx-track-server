@@ -14,7 +14,7 @@ class MaintenanceRecord < ApplicationRecord
   include Sortable
 
   belongs_to :user_vehicle
-  has_many :maintenance_menu_records
+  has_many :maintenance_menu_records, dependent: :destroy
   has_many :maintenance_menus, through: :maintenance_menu_records
 
   attribute :operation_hours, :integer
@@ -30,7 +30,10 @@ class MaintenanceRecord < ApplicationRecord
 
   class << self
     def last_maintenance_dates_by(menu_ids)
-      where(maintenance_menu_id: menu_ids).group(:maintenance_menu_id).maximum(:maintenance_on)
+      eager_load(:maintenance_menus)
+        .where(maintenance_menus: { id: menu_ids })
+        .group('maintenance_menus.id')
+        .maximum(:maintenance_on)
     end
   end
 
