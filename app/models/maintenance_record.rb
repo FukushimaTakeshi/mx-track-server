@@ -2,19 +2,17 @@
 #
 # Table name: maintenance_records
 #
-#  id                  :bigint           not null, primary key
-#  maintenance_on      :date             not null
-#  operation_time      :integer          not null
-#  memo                :text
-#  maintenance_menu_id :bigint           not null
-#  user_vehicle_id     :bigint           not null
-#  created_at          :datetime         not null
-#  updated_at          :datetime         not null
+#  id              :bigint           not null, primary key
+#  maintenance_on  :date             not null
+#  operation_time  :integer          not null
+#  memo            :text
+#  user_vehicle_id :bigint           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
 #
 class MaintenanceRecord < ApplicationRecord
   include Sortable
 
-  belongs_to :maintenance_menu
   belongs_to :user_vehicle
   has_many :maintenance_menu_records
   has_many :maintenance_menus, through: :maintenance_menu_records
